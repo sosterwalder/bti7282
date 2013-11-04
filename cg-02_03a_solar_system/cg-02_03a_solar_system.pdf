@@ -1,0 +1,182 @@
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta name="author" content="BUAS-TI" />
+	<meta name="publisher" content="cpvrlab BUAS-TI" />
+	<meta name="language" content="en" />
+	<meta name="robots" content="index, follow" />
+	<meta name="revisit-after" content="7 days" />
+	<link href="/favicon.ico" rel="shortcut icon" />
+	<link rel="icon" href="/favicon.ico" type="image/ico" />
+	<link rel="stylesheet" type="text/css" href="//ci.bfh.ch/css/django/main.css" />
+	
+	<script type="text/javascript" src="/static/design/js/functions.js"></script>
+
+	<title>Login ::&nbsp; ::&nbsp;cpvrLab ::&nbsp;Institute for Human Centered Engineering ::&nbsp;BUAS-TI</title>
+
+
+	<script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-28903014-1']); _gaq.push(['_setDomainName', 'cpvrlab.ti.bfh.ch']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script>
+</head>
+<body>
+
+<!-- START OUTER CONTAINER -->
+<div id="container">
+<a id="top" name="top"></a>
+
+<!-- START HEADER -->
+<div id="header">
+    <div id="headerMenu" style="width: 270px"> 
+	<div id="langMenu">
+	<a href="/meta/lang/de/" class="langPassive" >de</a> | 
+	<a href="/meta/lang/fr/"  class="langPassive" >fr</a> | 
+	<a href="/meta/lang/en/" class="langActive" >en</a></div>
+	
+        <div id="headerLinks"><ul class="metaNavigation"><li class="metaNavigation-no"> &nbsp;<a href="https://www.ti.bfh.ch/en/" >BUAS-TI</a>&#124;</li><li class="metaNavigation-no"><a href="http://forschung.ti.bfh.ch/en/institute/institute_for_human_centered_engineering.html">HuCE</a></li></ul></div>
+        <div id="headerLinks"><ul class="metaNavigation"><li class="metaNavigation-no"><a style="margin-right:0;" href="/user/logout/?&next=/user/login/" title="Logout"><a href="/user/login/?&next=/user/login/" title="Login">Login</a></li></ul></div>
+    </div>
+	<img src="/meta/img/header/en/" alt="Bern University of Applied Sciences Engineering and Information Technology" id="bfhLogo" usemap="#header" />
+	<map name="header">
+		<area shape="rect" coords="0,0,217,72" title="Bern University of Applied Sciences" alt="Bern University of Applied Sciences" href="http://www.bfh.ch/en/home.html" target="blank" />
+		<area shape="rect" coords="234,0,492,11" title="Engineering and Information Technology" alt="Engineering and Information Technology" href="http://www.ti.bfh.ch/en/" target="blank" />
+		<area shape="rect" coords="234,17,492,28" title="Institute for Human Centered Engineering - cpvrLab" alt="Institute for Human Centered Engineering - cpvrLab" href="/" />
+		<area shape="rect" coords="234,34,492,45" title="Institute for Human Centered Engineering - cpvrLab" alt="Institute for Human Centered Engineering - cpvrLab" href="/" />
+	</map>
+</div>
+<!-- END HEADER -->
+
+<!-- START MAINMENU -->
+<div id="mainMenu">
+	<ul class="mainNav_middle">
+		<li class="mainMenu1-no"><a href="/bachelor/" onfocus="blurLink(this);">Bachelor </a></li>
+		<li class="mainMenu1-no"><a href="/master/" onfocus="blurLink(this);">Master </a></li>
+		<li class="mainMenu1-no"><a href="/research/" onfocus="blurLink(this);">Research </a></li>
+		<li class="mainMenu1-no"><a href="/lab/" onfocus="blurLink(this);">Laboratory </a></li>
+	</ul>
+</div>
+		 
+<!-- END MAINMENU -->
+
+<!-- START OUTER BOX. CONTAINS ALL THREE COLUMNS -->
+
+<div id="outer">
+	<!-- START LEFT COLUMN -->
+	<div id="left">
+<div id="leftContent">
+	<ul class="subMenu">
+	</ul>
+</div>
+
+	</div>
+	<!-- END LEFT COLUMN -->
+
+<!-- START OF INNER BOX CONTAINING THE IMAGE ON TOP AND THE MIDDLE AND LEFT COLUMN -->
+<div id="middleRightBox">
+<img src="/media/design/img/default_small.jpg" width="745" height="140" border="0" id="image-top" alt="" title="" />
+
+<div id="breadcrumb">
+<a href="/" onfocus="blurLink(this);"  >cpvrLab</a>&nbsp;&nbsp;</div>
+
+
+<!-- START OF THE BOX WITH MIDDLE AND RIGHT COLUMN -->
+<div id="middleRight">
+<!-- START OF THE RIGHT COLUMN -->
+<div id="right">
+		<div id="iconBox">
+			<div id="printPdf"></div>
+			<div id="mailPage"></div>
+			<div id="printPage"></div>
+		</div>
+		
+		<div id="searchBox"><h2>Search</h2>
+			<form action="http://www.ti.bfh.ch/de/sitesearch/suche.html" id="cref_iframe"><div>
+				<input type="hidden" name="cx" value="002941251596693344392:o5iuas0yxd8" />
+				<input type="hidden" name="cof" value="FORID:10" />
+				<input type="hidden" name="ie" value="UTF-8" />    
+				<input type="text" id="searchInputField" name="q" value="&nbsp;" />
+				<input type="submit" id="searchSubmitButton" name="sa" value="Search" />
+  			</div></form>
+			<a href="http://www.ti.bfh.ch/en/search/personensuche.html" title="Search for Staff Members" class="linkWithArrowBefore">Search for Staff Members</a>
+		</div>
+		
+
+		<div id="rightContent">
+		
+		<h2>Contact us</h2>
+			<p class="bodytext">
+			<b>Institut for Human Centered Engineering</b><br />
+			Prof. Dr. Marcel Jacomet<br />
+			T +41 32 321 62 41<br />
+			<a href="javascript:linkTo_UnCryptMailto('pdlowr-pdufho1mdfrphwCeik1fk');" title="" class="linkWithArrowBefore" class="icon-link-all">E-Mail</a>
+			</p>
+
+			<p class="bodytext">Quellgasse 21<br />CH-2502 Biel/Bienne</p>
+		
+		</div>
+<!-- END OF THE RIGHT COLUMN -->
+</div>
+<!-- END OF THE INNER BOX WITH MIDDLE AND RIGHT COLUMN -->
+
+<div id="middleContent">
+	<h1 class="pageTitle">Login</h1>
+		<div id="middleContentText">
+	
+
+
+
+<p>
+	<form name="login" method="post" action="/user/login/">
+	<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='33YQ6d0jFI5qbSFmZnmt02PjTKgptTwp' /></div>
+	<table>
+		<tr><td colspan="2">Please enter your username and password <br /><br /></td></tr>
+
+		<tr><td><label for="id_username">Username:</label></td><td><input id="id_username" type="text" name="username" maxlength="30" /></td></tr>  
+		<tr><td><label for="id_password">Password:</label></td><td><input type="password" name="password" id="id_password" /></td></tr>
+		<tr><td></td><td><input style="text-align:right;" id="blockSubmit" type="submit" value="Login" /></td></tr>
+	</table>
+	<input type="hidden" name="next" value="/bachelor/BTI7282/vr/private/vr/klu1/course-cg/assignments/CG-02.03A - Solar System.pdf" />
+
+	</form>
+</p>
+
+<script type="text/javascript">
+	<!--
+	document.login.username.focus()
+	// -->
+</script>
+
+
+		</div>
+	<div id="top_anchor"> <a href="#top" title="top">top</a></div>
+</div>
+<div class="clearfooter"></div>
+</div>
+</div>
+
+<!-- END OUTER BOX -->
+
+</div>
+<!-- START FOOTER -->
+	<div id="footer">
+	    <div id="footerLinks"><ul class="metaNavigation"><li class="metaNavigation-no"><a href="http://forschung.ti.bfh.ch/en/footer_navigation/impressum.html" onfocus="blurLink(this);"  >Impressum</a>&#124;</li><li class="metaNavigation-no"><a href="http://forschung.ti.bfh.ch/en/footer_navigation/disclaimer.html" onfocus="blurLink(this);"  >Disclaimer</a>&#124;</li><li class="metaNavigation-no"><a href="http://forschung.ti.bfh.ch/en/footer_navigation/sitemap.html" onfocus="blurLink(this);"  >Sitemap</a></li></ul></div>
+	    <div id="copyRight">&copy; 2013 Bern University of Applied Sciences Engineering and Information Technology, vep2</div>
+	</div>
+<!-- END FOOTER -->
+	<div id="efqm"><a href="http://www.ti.bfh.ch/de/bfh_ti/qualitaetsmanagement.html" title="EFQM" ><img src="/static/design/img/efqm_kl.gif" id="efqm-logo" alt="EFQM" /></a></div>
+</div>
+<!-- END OUTER CONTAINER	 -->
+
+
+</body>
+</html>

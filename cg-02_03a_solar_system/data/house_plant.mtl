@@ -1,0 +1,28 @@
+# Max2Mtl Version 4.0 Mar 10th, 2001
+#
+newmtl 04_-_Default
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_1_0.JPG
+#
+newmtl w__venge
+Ka  0.7 0.7 0.5
+Kd  0.7 0.7 0.5
+Ks  0.2 0.2 0.2
+d  1.0
+Ns  10.0
+illum 2
+#
+newmtl Leather_besh
+Ka  1.0 1.0 0.9
+Kd  1.0 1.0 0.9
+Ks  0.1 0.1 0.1
+d  1.0
+Ns  10.0
+illum 2
+#
+# EOF
