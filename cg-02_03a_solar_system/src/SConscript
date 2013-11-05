@@ -37,7 +37,12 @@ else:
 env = Environment(
     CPPPATH = include_dirs,
 	CCFLAGS = flags,
-    CPPDEFINES = defines
+    CPPDEFINES = defines,
+    ENV = {
+        'PATH' : os.environ['PATH'],
+        'TERM' : os.environ['TERM'],
+        'HOME' : os.environ['HOME']
+    }
 )
 
 env.Program(
