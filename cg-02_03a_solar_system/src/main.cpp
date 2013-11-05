@@ -183,7 +183,7 @@ class Framework
                 vec3Pos2.z += 3.0f;
                 p.SetScale(0.03f, 0.03f, 0.03f);
                 p.SetWorldPosition(vec3Pos2.x, vec3Pos2.y, vec3Pos2.z);
-                //p.SetRotation(0.0f, fRotation, 0.0f);
+                p.SetRotation(0.0f, fRotation, 0.0f);
                 p.SetCamera(m_pCamera->GetPosition(), m_pCamera->GetTarget(), m_pCamera->GetUp());
                 m_pEffect->SetWVP(p.GetWorldPerspectiveTransformation(true));
                 m_pEffect->SetWorldMatrix(p.GetWorldTransformation(true));

@@ -10,18 +10,7 @@ const Matrix4f& Pipeline::GetWorldTransformation(bool bRotateAroundPivot, bool f
 
     if (bRotateAroundPivot) 
     {
-        if (foo) {
-            Matrix4f mat4Foo, mat4Foo2;
-            float fRotation = (float)glfwGetTime() * 1.0f;
-            
-            mat4Foo.InitRotateTransform(-90.0f, 90.0f, 0.0f);
-            mat4Foo2.InitRotateTransform(0.0f, -fRotation, 0.0f);
-
-            m_mat4WorldTransformation = mat4RotationTransformation * mat4TranslationTransformation * mat4ScaleTransformation * mat4Foo;
-        }
-        else {
-            m_mat4WorldTransformation = mat4RotationTransformation * mat4TranslationTransformation * mat4ScaleTransformation;
-        }
+        m_mat4WorldTransformation = mat4RotationTransformation * mat4TranslationTransformation * mat4ScaleTransformation;
     }
     else
     {

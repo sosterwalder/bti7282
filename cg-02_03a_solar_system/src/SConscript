@@ -1,0 +1,50 @@
+import os
+Import('main_path')
+
+libs = [
+	'GL',
+	'GLEW',
+	'assimp',
+    'glfw',
+    'Magick++-6.Q16HDRI'
+]
+
+file_list = [
+	Glob('*.cpp')
+]
+
+include_dirs = [
+    '/usr/include/ImageMagick-6/',
+    '/usr/include/assimp/'
+]
+
+flags = [
+	'-std=c++11',
+	'-Wall'
+]
+
+defines = [
+    '-DMAGICKCORE_QUANTUM_DEPTH=16',
+    '-DMAGICKCORE_HDRI_ENABLE=1'
+]
+
+if ARGUMENTS.get('debug', 0):
+	flags.extend(['-g'])
+else:
+	flags.extend(['-O3'])
+
+
+env = Environment(
+    CPPPATH = include_dirs,
+	CCFLAGS = flags,
+    CPPDEFINES = defines
+)
+
+env.Program(
+    os.path.join(
+        main_path,
+        'solarsystem'
+    ),
+    file_list,
+    LIBS=libs
+)
