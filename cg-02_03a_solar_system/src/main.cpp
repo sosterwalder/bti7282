@@ -167,41 +167,88 @@ class Framework
                 // Pipieline
                 Pipeline p;
                 p.SetPerspectiveProjection(60.0f, WINDOW_WIDTH, WINDOW_HEIGHT, 1.0f, 100.0f);
+                
+                Matrix4f mat4Scale;
+                mat4Scale.InitScaleTransform(
+                    0.07f,
+                    0.07f,
+                    0.07f
+                );
 
                 // First mesh (planetoid)
                 Vector3f vec3Pos1(0.0f, 0.0f, 0.0f);
                 p.SetWorldPosition(vec3Pos1.x, vec3Pos1.y, vec3Pos1.z);
                 p.SetCamera(m_pCamera->GetPosition(), m_pCamera->GetTarget(), m_pCamera->GetUp());
-                m_pEffect->SetWVP(p.GetWorldPerspectiveTransformation());
-                m_pEffect->SetWorldMatrix(p.GetWorldTransformation());
+
+                Matrix4f mat4WorldTransformation1 = p.GetWorldTransformation();
+                m_pEffect->SetWorldMatrix(mat4WorldTransformation1);
+                
+                Matrix4f mat4WorldPerspectiveTransformation1 = p.GetWorldPerspectiveTransformation(mat4WorldTransformation1);
+                m_pEffect->SetWVP(mat4WorldPerspectiveTransformation1);
+
                 m_pMesh->Render();
 
                 // Second  mesh (plant)
                 Vector3f vec3Pos2 = vec3Pos1;
                 vec3Pos2.x -= 3.0f;
-                vec3Pos2.y -= 1.0f;
-                vec3Pos2.z += 3.0f;
-                p.SetScale(0.03f, 0.03f, 0.03f);
                 p.SetWorldPosition(vec3Pos2.x, vec3Pos2.y, vec3Pos2.z);
-                p.SetRotation(0.0f, fRotation, 0.0f);
+                p.SetRotation(0.0f, fRotation * 0.7f, 0.0f);
+                
                 p.SetCamera(m_pCamera->GetPosition(), m_pCamera->GetTarget(), m_pCamera->GetUp());
-                m_pEffect->SetWVP(p.GetWorldPerspectiveTransformation(true));
-                m_pEffect->SetWorldMatrix(p.GetWorldTransformation(true));
+
+                //Matrix4f mat4WorldTransformation2 = p.GetWorldTransformation();
+                Matrix4f mat4WorldTransformation2 = p.GetWorldTransformationAroundPivot();
+                m_pEffect->SetWorldMatrix(mat4WorldTransformation2 * mat4Scale);
+
+                Matrix4f mat4WorldPerspectiveTransformation2 = p.GetWorldPerspectiveTransformation(mat4WorldTransformation2 * mat4Scale);
+                m_pEffect->SetWVP(mat4WorldPerspectiveTransformation2);
+
                 m_pMeshTwo->Render();
 
+
                 // Third mesh (planetoid)
-                Vector3f vec3Pos3 = vec3Pos2;
-                vec3Pos3.x += 1.5f;
-                vec3Pos3.y += 1.0f;
-                p.SetScale(0.1f, 0.1f, 0.1f);
-                //p.SetWorldPosition(vec3Pos3.x, vec3Pos3.y, vec3Pos3.z);
-                p.SetRotation(0.0f, fRotation, 0.0f);
-                p.SetWorldPosition(0.0f, 1.5f, 3.0f);
-                Vector3f vec3Foos = m_pCamera->GetPosition();
-                vec3Foos.x = vec3Pos1.x + 3.0f;
-                p.SetCamera(vec3Foos, m_pCamera->GetTarget(), m_pCamera->GetUp());
-                m_pEffect->SetWorldMatrix(p.GetWorldTransformation(true, true));
-                m_pEffect->SetWVP(p.GetWorldPerspectiveTransformation(true, true));
+                Vector3f vec3Pos3 = vec3Pos2;//Vector3f(0.0f, 0.0f, 0.0f);
+                vec3Pos3.x -= 1.5f;
+                p.SetWorldPosition(vec3Pos3.x, vec3Pos3.y, vec3Pos3.z);
+                p.SetRotation(0.0f, -fRotation * 10.6f, 0.0f);
+
+                Matrix4f mat4Rotation;
+                mat4Rotation.InitRotateTransform(
+                    0.0f,
+                    -fRotation,
+                    0.0f
+                );
+
+                Matrix4f mat4Translation;
+                mat4Translation.InitTranslationTransform(
+                    -1.5f,
+                    0.0f,
+                    0.0f
+                );
+                
+                Matrix4f mat4Translation2;
+                mat4Translation2.InitTranslationTransform(
+                    -3.0f,
+                    0.0f,
+                    0.0f
+                );
+                
+                Matrix4f mat4Rotation2;
+                mat4Rotation2.InitRotateTransform(
+                    0.0f,
+                    fRotation * 0.7,
+                    0.0f
+                );
+
+                p.SetCamera(m_pCamera->GetPosition(), m_pCamera->GetTarget(), m_pCamera->GetUp());
+                
+                //Matrix4f mat4WorldTransformation3 = p.GetWorldTransformationAroundPivot(mat4WorldTransformation2);
+                Matrix4f mat4WorldTransformation3 = mat4Rotation2 * mat4Translation2 * mat4Rotation * mat4Translation * mat4Scale;
+                m_pEffect->SetWorldMatrix(mat4WorldTransformation3);
+
+                Matrix4f mat4WorldPerspectiveTransformation3 = p.GetWorldPerspectiveTransformation(mat4WorldTransformation3);
+                m_pEffect->SetWVP(mat4WorldPerspectiveTransformation3);
+
                 m_pMeshThree->Render();
 
                 glfwSwapBuffers(m_pWindow);

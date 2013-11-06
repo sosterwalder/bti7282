@@ -49,13 +49,25 @@ class Pipeline
             m_Camera.vec3Up = vec3Up;
         }
 
-        const Matrix4f& GetWorldTransformation(bool bRotateAroundPivot = false, bool foo = false);
-        const Matrix4f& GetWorldPerspectiveTransformation(bool bRotateAroundPivot = false, bool foo = false);
+        const Matrix4f& GetWorldTransformation();
+        const Matrix4f& GetWorldTransformation(const Matrix4f& mat4Matrix);
+        const Matrix4f& GetWorldTransformationAroundPivot();
+        const Matrix4f& GetWorldTransformationAroundPivot(const Matrix4f& mat4Matrix);
+
+        const Matrix4f& GetWorldPerspectiveTransformation(const Matrix4f& mat4WorldTransformation);
 
     private:
         Vector3f m_vec3Scale;
         Vector3f m_vec3WorldPosition;
         Vector3f m_vec3RotationInfo;
+
+        struct Matrices {
+            Matrix4f mat4ScaleTransformation;
+            Matrix4f mat4TranslationTransformation;
+            Matrix4f mat4RotationTransformation;
+        };
+
+        Matrices PrepareMatrices();
 
         struct {
             float fFov;
