@@ -49,13 +49,14 @@ const Matrix4f& Pipeline::GetWorldTransformationAroundPivot(const Matrix4f& mat4
 
 const Matrix4f& Pipeline::GetWorldPerspectiveTransformation(const Matrix4f& mat4WorldTransformation)
 {
-    Matrix4f mat4CameraTranslationTransformation, mat4CameraRotationTransformation, mat4PerspectiveProjectionTransformation;
+    Matrices matrices = PrepareWorldMatrices();
 
-    mat4CameraTranslationTransformation.InitTranslationTransform(-m_Camera.vec3Position.x, -m_Camera.vec3Position.y, -m_Camera.vec3Position.z);
-    mat4CameraRotationTransformation.InitCameraTransform(m_Camera.vec3Target, m_Camera.vec3Up);
-    mat4PerspectiveProjectionTransformation.InitPersProjTransform(m_PerspectiveProjection.fFov, m_PerspectiveProjection.fWidth, m_PerspectiveProjection.fHeight, m_PerspectiveProjection.fZNear, m_PerspectiveProjection.fZFar);
 
-    m_mat4WorldPerspectiveTransformation = mat4PerspectiveProjectionTransformation * mat4CameraTranslationTransformation * mat4WorldTransformation * mat4CameraRotationTransformation;
+    m_mat4WorldPerspectiveTransformation =
+        matrices.mat4ScaleTransformation *
+        matrices.mat4TranslationTransformation *
+        mat4WorldTransformation *
+        matrices.mat4RotationTransformation;
 
     return m_mat4WorldPerspectiveTransformation;
 }
@@ -86,6 +87,39 @@ Pipeline::Matrices Pipeline::PrepareMatrices()
     matrices.mat4ScaleTransformation        = mat4ScaleTransformation;
     matrices.mat4RotationTransformation     = mat4RotationTransformation;
     matrices.mat4TranslationTransformation  = mat4TranslationTransformation;
+
+    return matrices;
+}
+
+Pipeline::Matrices Pipeline::PrepareWorldMatrices()
+{
+    Matrices matrices;
+    Matrix4f mat4CameraTranslationTransformation;
+    Matrix4f mat4CameraRotationTransformation;
+    Matrix4f mat4PerspectiveProjectionTransformation;
+
+    mat4CameraTranslationTransformation.InitTranslationTransform(
+        -m_Camera.vec3Position.x,
+        -m_Camera.vec3Position.y,
+        -m_Camera.vec3Position.z
+    );
+
+    mat4CameraRotationTransformation.InitCameraTransform(
+        m_Camera.vec3Target,
+        m_Camera.vec3Up
+    );
+    
+    mat4PerspectiveProjectionTransformation.InitPersProjTransform(
+        m_PerspectiveProjection.fFov,
+        m_PerspectiveProjection.fWidth,
+        m_PerspectiveProjection.fHeight,
+        m_PerspectiveProjection.fZNear,
+        m_PerspectiveProjection.fZFar
+    );
+
+    matrices.mat4TranslationTransformation  = mat4CameraTranslationTransformation;
+    matrices.mat4ScaleTransformation        = mat4PerspectiveProjectionTransformation;
+    matrices.mat4RotationTransformation     = mat4CameraRotationTransformation;
 
     return matrices;
 }

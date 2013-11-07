@@ -68,6 +68,7 @@ class Pipeline
         };
 
         Matrices PrepareMatrices();
+        Matrices PrepareWorldMatrices();
 
         struct {
             float fFov;
