@@ -9,20 +9,20 @@ char*  Util::File2String(const char* path)
  
 	if (!(fd = fopen(path, "r")))
 	{
-		fprintf(stderr, "Can't open file '%s' for reading\n", path);
+		fprintf(stderr, "ERROR: Can't open file '%s' for reading\n", path);
 		return NULL;
 	}
  
 	fseek(fd, 0, SEEK_END);
 	len = ftell(fd);
  
-	printf("File '%s' is %ld long\n", path, len);
+	printf("INFO: File '%s' is %ld long\n", path, len);
  
 	fseek(fd, 0, SEEK_SET);
 
 	if (!(str = (char *) malloc(len * sizeof(char))))
 	{
-		fprintf(stderr, "Can't malloc space for '%s'\n", path);
+		fprintf(stderr, "ERROR: Can't malloc space for '%s'\n", path);
 		return NULL;
 	}
  
