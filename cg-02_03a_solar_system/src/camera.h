@@ -40,8 +40,6 @@ class Camera
         bool m_bIsOnLowerEdge;
         bool m_bIsOnLeftEdge;
         bool m_bIsOnRightEdge;
-
-        Vector2i m_vec2MousePosition;
 };
 
 #endif
