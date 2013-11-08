@@ -3,8 +3,6 @@
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 768
 
-static float fFieldDepth = 10.0f;
-
 class Framework
 {
     public:
@@ -50,6 +48,13 @@ class Framework
 
             printf("INFO: Initialized GLFW\n");
 
+
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+            glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
             /* Create a windowed mode window and its OpenGL context */
             m_pWindow = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Sneaker system", NULL, NULL);
             if (!m_pWindow)
@@ -78,6 +83,7 @@ class Framework
                 exit(EXIT_FAILURE);
             }
             printf("INFO: Initialized GLEW\n");
+            printf("INFO: OpenGL version supported by this platform (%s): \n", glGetString(GL_VERSION));
             
             m_pCamera = new Camera(WINDOW_WIDTH, WINDOW_HEIGHT, vec3Position, vec3Target, vec3Up);
             
