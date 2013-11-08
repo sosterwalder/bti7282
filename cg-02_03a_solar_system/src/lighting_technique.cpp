@@ -7,18 +7,22 @@ LightingTechnique::LightingTechnique()
 bool LightingTechnique::Init()
 {
     if (!Technique::Init()) {
+        printf("ERROR: Error initializing technique");
         return false;
     }
 
     if (!AddShader(GL_VERTEX_SHADER, "data/shaders/lighting.vert")) {
+        printf("ERROR: Error loading vertex shader");
         return false;
     }
 
     if (!AddShader(GL_FRAGMENT_SHADER, "data/shaders/lighting.frag")) {
+        printf("ERROR: Error loading fragment shader");
         return false;
     }
 
     if (!Finalize()) {
+        printf("ERROR: Error finalizing");
         return false;
     }
 
@@ -47,6 +51,9 @@ bool LightingTechnique::Init()
         m_matSpecularPowerLocation == INVALID_UNIFORM_LOCATION ||
         m_numPointLightsLocation == INVALID_UNIFORM_LOCATION ||
         m_numSpotLightsLocation == INVALID_UNIFORM_LOCATION) {
+
+        printf("ERROR: Got invalid uniform location");
+
         return false;
     }
 
@@ -55,7 +62,6 @@ bool LightingTechnique::Init()
         memset(Name, 0, sizeof(Name));
         SNPRINTF(Name, sizeof(Name), "gPointLights[%d].Base.Color", i);
         m_pointLightsLocation[i].Color = GetUniformLocation(Name);
-        puts(Name);
 
         SNPRINTF(Name, sizeof(Name), "gPointLights[%d].Base.AmbientIntensity", i);
         m_pointLightsLocation[i].AmbientIntensity = GetUniformLocation(Name);
@@ -82,6 +88,9 @@ bool LightingTechnique::Init()
             m_pointLightsLocation[i].Atten.Constant == INVALID_UNIFORM_LOCATION ||
             m_pointLightsLocation[i].Atten.Linear == INVALID_UNIFORM_LOCATION ||
             m_pointLightsLocation[i].Atten.Exp == INVALID_UNIFORM_LOCATION) {
+
+            printf("ERROR: Got invalid uniform location");
+
             return false;
         }
     }
@@ -125,6 +134,9 @@ bool LightingTechnique::Init()
             m_spotLightsLocation[i].Atten.Constant == INVALID_UNIFORM_LOCATION ||
             m_spotLightsLocation[i].Atten.Linear == INVALID_UNIFORM_LOCATION ||
             m_spotLightsLocation[i].Atten.Exp == INVALID_UNIFORM_LOCATION) {
+
+            printf("ERROR: Got invalid uniform location");
+
             return false;
         }
     }
