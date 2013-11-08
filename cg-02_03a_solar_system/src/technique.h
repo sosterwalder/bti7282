@@ -13,7 +13,7 @@ public:
 
 protected:
 
-    bool AddShader(GLenum ShaderType, const char* pShaderText);
+    bool AddShader(GLenum ShaderType, std::string strShaderPath);
     bool Finalize();
 
     GLint GetUniformLocation(const char* pUniformName);

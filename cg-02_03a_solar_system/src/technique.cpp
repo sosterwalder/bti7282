@@ -29,7 +29,7 @@ bool Technique::Init()
     m_shaderProg = glCreateProgram();
 
     if (m_shaderProg == 0) {
-        fprintf(stderr, "Error creating shader program\n");
+        fprintf(stderr, "ERROR: Error creating shader program\n");
         return false;
     }
 
@@ -37,33 +37,43 @@ bool Technique::Init()
 }
 
 // Use this method to add shaders to the program. When finished - call finalize()
-bool Technique::AddShader(GLenum ShaderType, const char* pShaderText)
+bool Technique::AddShader(GLenum ShaderType, std::string strShaderPath)
 {
     GLuint ShaderObj = glCreateShader(ShaderType);
+    std::string strShaderType = "Unknown";
+
+    if (ShaderType == GL_VERTEX_SHADER) {
+        strShaderType = "Vertex";
+    }
+    else if (ShaderType == GL_FRAGMENT_SHADER) {
+        strShaderType = "Fragment";
+    }
+
 
     if (ShaderObj == 0) {
-        fprintf(stderr, "Error creating shader type %d\n", ShaderType);
+        fprintf(stderr, "ERROR: Error creating shader type %s\n", strShaderType.c_str());
         return false;
     }
 
     // Save the shader object - will be deleted in the destructor
     m_shaderObjList.push_back(ShaderObj);
 
-    const GLchar* p[1];
-    p[0] = pShaderText;
-    GLint Lengths[1];
-    Lengths[0]= strlen(pShaderText);
-    glShaderSource(ShaderObj, 1, p, Lengths);
+    // Load shader from file
+    const GLchar* pShaderText = Util::File2String(strShaderPath.c_str());
+
+    glShaderSource(ShaderObj, 1, &pShaderText, NULL);
 
     glCompileShader(ShaderObj);
 
     GLint success;
     glGetShaderiv(ShaderObj, GL_COMPILE_STATUS, &success);
 
+    //glGetShaderiv(m_HandleVertex, GL_INFO_LOG_LENGTH, &bufflen);
+
     if (!success) {
         GLchar InfoLog[1024];
         glGetShaderInfoLog(ShaderObj, 1024, NULL, InfoLog);
-        fprintf(stderr, "Error compiling shader type %d: '%s'\n", ShaderType, InfoLog);
+        fprintf(stderr, "ERROR: Error compiling shader type %s: '%s'\n", strShaderType.c_str(), InfoLog);
         return false;
     }
 
