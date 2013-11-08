@@ -115,11 +115,11 @@ void main()
     vec3 Normal = normalize(Normal0);
     vec4 TotalLight = CalcDirectionalLight(Normal);
 
-    for (int i = 0 ;
+    for (int i = 0 ; i < gNumPointLights ; i++) {
         TotalLight += CalcPointLight(gPointLights[i], Normal);
     }
 
-    for (int i = 0 ;
+    for (int i = 0 ; i < gNumSpotLights ; i++) {
         TotalLight += CalcSpotLight(gSpotLights[i], Normal);
     }
 
